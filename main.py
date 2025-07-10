@@ -38,31 +38,40 @@ def report(driver, hedef):
     driver.get(f"https://www.instagram.com/{hedef}/")
     time.sleep(7)
     try:
-        # 3 nokta
-        buttons = driver.find_elements(By.XPATH, '//button')
-        for btn in buttons:
-            if btn.text.strip() == "...":
-                btn.click()
-                break
-        time.sleep(2)
+    # 3 nokta menüye tıklama (önceden yapılmış olmalı)
+    
+    # Şikayet et
+    driver.find_element(By.XPATH, '//button[contains(text(), "Şikayet et")]').click()
+    time.sleep(2)
 
-        # Şikayet Et Akışı
-        driver.find_element(By.XPATH, '//button[contains(text(), "Şikayet et")]').click()
-        time.sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(), "Hesabı Şikayet Et")]').click()
-        time.sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(), "İnstagram'da olmaması gereken içerikler paylaşıyor")]').click()
-        time.sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(), "Şidet, nefret veya sömürü")]').click()
-        time.sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(), "İstismar gibi görünüyor")]').click()
-        time.sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(), "Cinsel istismar gibi görünüyor")]').click()
-        time.sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(), "Evet")]').click()
-        return "✔️ Başarılı"
-    except Exception as e:
-        return f"❌ Hata: {e}"
+    # Hesabı şikayet et
+    driver.find_element(By.XPATH, '//button[contains(text(), "Bu hesabı şikayet et")]').click()
+    time.sleep(2)
+
+    # İçerik ihlali seçeneği
+    driver.find_element(By.XPATH, '//button[contains(text(), "Instagram\'da olmaması gereken içerikler paylaşıyor")]').click()
+    time.sleep(2)
+
+    # Şiddet, nefret veya sömürü
+    driver.find_element(By.XPATH, '//button[contains(text(), "Şiddet, nefret veya sömürü")]').click()
+    time.sleep(2)
+
+    # İstismar gibi görünüyor
+    driver.find_element(By.XPATH, '//button[contains(text(), "İstismar gibi görünüyor")]').click()
+    time.sleep(2)
+
+    # Cinsel istismar gibi görünüyor
+    driver.find_element(By.XPATH, '//button[contains(text(), "Cinsel istismar gibi görünüyor")]').click()
+    time.sleep(2)
+
+    # Evet, devam et
+    driver.find_element(By.XPATH, '//button[contains(text(), "Evet")]').click()
+    time.sleep(2)
+    
+    return "✔️ Şikayet başarıyla gönderildi."
+
+except Exception as e:
+    return f"❌ Hata oluştu: {e}"
 
 # 🔁 Tüm hesaplarla çalıştır
 def start(hedef_kullanici):
