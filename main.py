@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # 👥 Çoklu hesaplar
 hesaplar = [
-    ("kullanici_adi1", "sifre1"),
+    ("nabi_kekem", "babapro41"),
     ("kullanici_adi2", "sifre2")
     # istediğin kadar ekleyebilirsin
 ]
@@ -49,13 +49,17 @@ def report(driver, hedef):
         # Şikayet Et Akışı
         driver.find_element(By.XPATH, '//button[contains(text(), "Şikayet et")]').click()
         time.sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(), "Başka bir şey")]').click()
+        driver.find_element(By.XPATH, '//button[contains(text(), "Hesabı Şikayet Et")]').click()
         time.sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(), "Şiddet, nefret veya sömürü")]').click()
+        driver.find_element(By.XPATH, '//button[contains(text(), "İnstagram'da olmaması gereken içerikler paylaşıyor")]').click()
         time.sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(), "Nefret söylemi veya sembolleri")]').click()
+        driver.find_element(By.XPATH, '//button[contains(text(), "Şidet, nefret veya sömürü")]').click()
         time.sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(), "Gönder")]').click()
+        driver.find_element(By.XPATH, '//button[contains(text(), "İstismar gibi görünüyor")]').click()
+        time.sleep(2)
+        driver.find_element(By.XPATH, '//button[contains(text(), "Cinsel istismar gibi görünüyor")]').click()
+        time.sleep(2)
+        driver.find_element(By.XPATH, '//button[contains(text(), "Evet")]').click()
         return "✔️ Başarılı"
     except Exception as e:
         return f"❌ Hata: {e}"
