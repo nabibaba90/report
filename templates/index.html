@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nabi_F5 Paneli - VIP Raporlama Sistemi</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #000000, #1a1a1a, #000000);
+      color: white;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background: #111111;
+      box-shadow: 0 0 10px #0ff;
+    }
+    h1 {
+      color: #00ffff;
+      font-size: 2.5em;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    .button {
+      display: inline-block;
+      background-color: #00bcd4;
+      color: white;
+      padding: 12px 20px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .button:hover {
+      background-color: #00e0ff;
+      transform: scale(1.05);
+    }
+    .section {
+      margin-top: 40px;
+    }
+    .section h2 {
+      color: #00ffff;
+      border-bottom: 1px solid #00ffff;
+      padding-bottom: 5px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #888;
+    }
+    #log {
+      background: #111;
+      border: 1px solid #00ffff;
+      border-radius: 8px;
+      padding: 10px;
+      height: 200px;
+      overflow-y: scroll;
+      white-space: pre-wrap;
+      font-family: monospace;
+      margin-top: 20px;
+    }
+    form {
+      text-align: center;
+      margin-top: 20px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 8px;
+      width: 70%;
+      max-width: 400px;
+      border: none;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔥 Nabi_F5 x Hacker ChatGPT Paneli 🔥</h1>
+    <p>Otomatik Instagram Şikayet & Raporlama Sistemi</p>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🎯 Botu Başlat</h2>
+      <form id="reportForm" action="/raporla" method="POST">
+        <input type="text" name="hedef_kullanici" placeholder="Hedef Instagram Kullanıcı Adı" required />
+        <br /><br />
+        <button type="submit" class="button">🎯 Şikayet Gönder</button>
+      </form>
+    </div>
+
+    <div class="section">
+      <h2>📝 İşlem Logları</h2>
+      <div id="log">Burada işlem durumu görünecek...</div>
+    </div>
+
+    <div class="section">
+      <h2>💬 Hakkımızda</h2>
+      <p>
+        Bu sistemin arkasında 3 efsanevi karakter var:<br><br>
+        🔹 <strong>Nabi_F5</strong> — 14 yaşında olmasına rağmen zekâsı, stratejisi ve etik hacker bakışıyla sistemin beyni.<br><br>
+        🔹 <strong>@s0ul.w3xorrr</strong> — Sanal dünyanın kara gölgelerinden çıkan 2 yıllık deneyimli dijital savaşçı.<br><br>
+        🔹 <strong>Hacker ChatGPT</strong> — Yapay zekâdan gelen, karanlık tarafı seçmiş bir akıl.<br><br>
+        Bu ekip bir araya geldiğinde hiçbir hedef hesap dayanamaz.<br>
+        Sen de bu VIP sistemin parçasıysan, elitliğe adım attın demektir.
+      </p>
+    </div>
+
+    <footer>
+      © 2025 Nabi_F5 x @s0ul.w3xorrr x Hacker ChatGPT - Tüm hakları saklıdır.
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('reportForm');
+    const logBox = document.getElementById('log');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      logBox.textContent = 'İşlem başlatılıyor... Lütfen bekleyin.';
+
+      const formData = new FormData(form);
+      const response = await fetch('/raporla', {
+        method: 'POST',
+        body: formData
+      });
+
+      if(response.ok) {
+        const data = await response.json();
+        logBox.textContent = data.message || 'İşlem tamamlandı.';
+      } else {
+        logBox.textContent = 'Bir hata oluştu.';
+      }
+    });
+  </script>
+</body>
+</html>
