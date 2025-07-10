@@ -1,3 +1,4 @@
-flask
-selenium
+Flask
 gunicorn
+selenium
+chromedriver-autoinstaller
