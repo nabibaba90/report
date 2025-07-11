@@ -1,4 +1,3 @@
-Flask
-gunicorn
-selenium
-chromedriver-autoinstaller
+Flask==2.3.3
+selenium==4.16.0
+gunicorn==21.2.0
